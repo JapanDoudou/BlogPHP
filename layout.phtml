@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>JapanDoudou <?= $pageTitle ?></title>
+<meta charset="utf-8">
+
+<!-- Viewport -->
+<meta name=viewport content="width=device-width, initial-scale=1"> 
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/bd644ddfa9.js" crossorigin="anonymous"></script>
+
+<!-- Fonts ---------->
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+
+<!-- On charge toujours notre CSS en dernier -->
+<link rel="stylesheet" href="css/font-mfizz.css">
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel = "stylesheet" type = "text/css" href = "css/style.css" />
+
+<?php if ($template == "cv") :?>
+	<link rel="stylesheet" href="css/slider.css" />
+<?php endif ?>
+
+<?php if($template == "memory"){
+	include 'memory_files/memory_head.phtml';
+	;}?>
+</head>
+
+<body id="style" class="normal"> 
+
+	<!-- the grid in background is a SVG -->
+	<?php include 'parts/thegrid.html' ;?>
+
+	<!-- the purr box, a box in JS to change the skin -->  
+	<div id="purr">  
+		<p>Meeeow !</p>
+		<i class="fas fa-cat" id="Haru"></i>
+		<i class="fas fa-cat" id="Natsu"></i>
+	</div>
+
+	<!-- header of the site with options that depend of user -->
+	<header>
+		<h1><a href="index.php">Loic Yneg Website</a></h1>
+		<?php if (isset($_SESSION['user'])) :?>
+			<p><i class="fas fa-user"></i>Bonjour <?= $_SESSION['user']['userName'] ?></p>
+		<?php endif ?>
+		<nav>
+			<ul ID="header-nav">
+				<?php if (isset($_SESSION['user'])) :?>
+					<?php if($template !== "admin" ):?>
+						<li>
+							<a href="admin.php"><i class="fas fa-cogs"></i>Administration</a>
+						</li>
+					<?php endif ?>
+						<li>
+							<a href="logout.php"><i class="fas fa-sign-out-alt"></i></i>Se Déconnecter</a>
+						</li>
+				<?php else: ?>
+						<li>
+							<a href="login.php"><i class="fas fa-sign-in-alt"></i>Se connecter</a>
+						</li>
+						<li>
+							<a href="register.php"><i class="fas fa-cogs"></i>S'inscrire</a>
+						</li>
+				<?php endif ?>
+				<?php if($template !== "games" ):?>
+					<li>
+						<a href="games.php"><i class="fas fa-gamepad"></i>Jeux</a>
+					</li>
+				<?php endif ?>
+				<?php if($template !== "cv" ):?>
+					<li>
+						<a href="cv.php"><i class="fas fa-pen-fancy"></i>Curiculum Vitae</a>
+					</li>
+				<?php endif ?>
+				<?php if($template !== "index" ):?>
+					<li>
+						<a href="index.php"><i class="fas fa-home"></i>Accueil</a>
+					</li>
+				<?php endif ?>
+			</ul>
+		</nav>
+		<?php include 'parts/theseparator.html'; ?>
+	</header>
+
+	<div class="flex-container">
+		<?php if ($template !== "cv"):?>
+			<!-- aside est un menu dynamique -->
+			<aside id="lastInfo">
+				<section id="findCategories">
+					<h3>Catégories</h3>
+					<ul>
+						<?php include 'sidebar.php' ?>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Les derniers articles</h3>
+					<ul>
+						<?php include 'lastarticles.php' ?>
+					</ul>
+				</section>
+				<?php if ($template !== 'memory'):?>
+					<section>
+						<h3>Memory High Score</h3>
+						<?php include 'leaderboard-mini.php' ?>
+					</section>
+				<?php endif ?>
+			</aside>
+		<?php endif ?>
+
+		<div class="main container">
+			<!-- Ici on charge le template du php -->
+			<?php include $template . '.phtml' ?>
+			<!-- Ici La fin du commentaire -->
+		</div>
+	</div>
+		
+	<footer>
+		<div class="container">
+			<ul id="social">
+				<li><a href="http://www.facebook.fr/japandoudou"><i class="fab fa-facebook"></i></a></li><!--
+				--><li><a href="https://www.instagram.com/japan_doudou/"><i class="fab fa-instagram"></i></a></li><!--
+				--><li><a href="https://fr.linkedin.com/in/lo%C3%AFc-geny"><i class="fab fa-linkedin"></i></a></li><!--
+			--><li id="mail"><a href="mailto:loic.geny@gmail.com"><i class="fas fa-envelope"></i><i class="fas fa-envelope-open-text"></i></a></li>
+			</ul>
+			<a href="http://www.japandoudou.com"><img src="img/logo.png"></a>
+			<p id="licence">Site perso de 2019 - Tous droits réservés</p>		
+		</div>
+	</footer>
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous">
+	</script>
+	<!-- gb script -->
+	<script src="js/gbEffect.js"></script>
+	<?php if ($template == "cv") :?>
+		<script src="js/rythm.js"></script>	
+		<script src="js/utilities.js"></script>
+		<script src="js/slider.js"></script>
+	<?php endif ?>
+	<?php if ($template == "memory") :?>
+		<script src="js/memory.js"></script>
+	<?php endif ?>
+	<?php if ($template == "article") :?>
+		<script src="js/comment.js"></script>	
+	<?php endif ?>
+</body>
+</html>

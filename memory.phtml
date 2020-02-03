@@ -1,0 +1,35 @@
+
+<main>
+    <article>
+        <h2>Memory Game</h2>
+        <p>Trouvez les paires en un minimum de temps !</p>
+    </article>
+        <h2>Timer</h2>
+        <p id="timer"></p>
+        <ul id="memory"></ul>
+        <div class="">
+            <div class="middle">
+                <p id="total">Il vous reste <strong id="paireCount">toutes les</strong> paires !</p>
+                <p>Vous avez joué <strong id="count">0</strong> coups !</p>
+            </div>
+            <div class="middle">
+                <button ID="newGame">New Game ?</button>
+                <button id="easy">Easy</button>
+                <button id="normal">Normal</button>
+                <button id="hard">Hard</button>
+            </div>
+        </div>
+        <form action="leaderboard.php" method="post" id="submitScore" class="hidden">
+            <label for="pseudo">Votre Pseudo</label>
+            <input type="text" name="pseudo" id="memoryPseudo" value="<?= $session ?>" required/>
+            <input id="hiddenTimer"  type="hidden" value="38" name="score">
+            <input id="hiddenCoups"  type="hidden" value="20" name="coups">
+            <input id="hiddenDifficulty" type="hidden" value="hard" name="difficulty">
+            <input id="hiddenScore" type="hidden" value="" name="hiddenScore">
+            <button>Je suis le meilleur !</button>
+        </form>
+        
+</main>
+<div>
+    <?php include 'leaderboard.phtml' ?>
+</div>

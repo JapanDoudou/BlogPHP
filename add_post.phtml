@@ -1,0 +1,33 @@
+<?php if(empty($_POST)) :?>
+	<form id="newArticle" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+	<h2>Rédiger un nouveal article</h2>
+		<fieldset>
+			<legend>Nouvel Article</legend>
+			<label for="title">Titre</label>
+			<input type="text" name="title" id="title" required>
+			<label for="content">Article</label>
+			<textarea name="content" id="content" rows="10" col="3" placeholder="Marque quelqeu chose ici ..." required></textarea>
+		
+			<label for="author">Auteur</label>
+			<select name="author" id="author"required>
+				<?php foreach ($authors as $author) :?>
+					<option value="<?= $author['ID'] ?>"><?= $author["lastName"]." ".$author["firstName"] ?></option>
+				<?php endforeach ?>
+			</select>
+		
+			<label for='category'>Catégorie</label>
+			<select name="category" id="category" required>
+				<?php foreach ($categories as $category) :?>
+					<option value="<?= $category['ID'] ?>"><?= $category["title"] ?></option>
+				<?php endforeach ?>
+			</select>
+			<div class="validation-btn">
+					<button class="btn">Enregistrer</button>
+					<a href="index.php" class="btn">Annuler</a>
+			</div>
+		</fieldset>
+
+	</form>
+
+<?php endif ?>
+	

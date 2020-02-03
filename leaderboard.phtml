@@ -1,0 +1,28 @@
+
+<h2>LeaderBoard - Qui a la meilleur mémoire ?</h2>
+<table ID="leaderboard">
+	<thead>
+		<td>Rang</td>
+		<td>Pseudo</td>
+		<td>Temps</td>
+		<td>Coups</td>
+		<td>Difficulté</td>
+		<td class="hidden">Date</td>
+	</thead>
+	<tbody>
+		<?php foreach ($users as $user) :?>
+			<tr>
+				<?php if($i <= 3):?>
+					<td class="medal m<?= $i?>"><?= $i++ ?></td>
+				<?php else :?>
+					<td><?= $i++ ?></td>
+				<?php endif ?>
+				<td><?= $user['pseudo'] ?></td>
+				<td><?= $user['score'] ?></td>
+				<td><?= $user['coups'] ?></td>
+				<td><?= $user['difficulty'] ?></td>
+				<td class="hidden"><?= $user['rankingDate'] ?></td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>

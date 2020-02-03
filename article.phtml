@@ -1,0 +1,68 @@
+<article class="posted">
+
+	<h2><?= htmlentities($post['title'])?></h2>
+
+	<p><?= htmlentities($post['content'])?></p>
+
+	<div class="author">Rédigé par <?= $post['firstName']." ".$post['lastName'] ?> le <?= $post['creationDate'] ?></div>
+
+	<?php if($post['updateDate'] !== NULL) :?>
+
+		<div class="modify">Modifié le : <?= $post['updateDate'] ?></div>
+
+	<?php endif ?>
+	
+</article>
+
+<section id="comment-section">
+	<section id="comments">
+		<?php foreach($comments as $comment) :?>
+
+			<div class="modern-separator">
+                <div class="separator"></div>
+            </div>
+
+			<article class="comment">
+				<h3><?= htmlentities($comment["pseudo"])?> a dit :</h3>
+				<p>
+				<?= htmlentities($comment["content"])?>
+				<span>Le <?= $comment["creationDate"]?></span>
+				</p>
+			</article>
+
+		<?php endforeach ?>
+
+	</section>
+
+	<section id="newComment"></section>
+
+	<nav>
+		<!-- On cherche la page suivante ou précédente dans Article.php-->
+		<?php if (!empty($before)):?>
+			<a id="before" href="article.php?ID=<?=$before['ID'] ?>">Article précédent</a>
+		<?php endif ?>
+		<?php if (!empty($after)) :?>
+			<a id="after" href="article.php?ID=<?=$after['ID'] ?>">Article Suivant</a>
+		<?php endif ?>
+	</nav>
+
+	<form id="comment-post">
+		<input type="hidden" value="<?= $postID?>" name="ID"/>
+		<legend><i class="fas fa-comments"></i>Nouveau Commentaire</legend>
+
+
+			<label for="pseudo">Pseudo :</label>
+			<input type="text" name="pseudo" id="pseudo" maxlength="40" placeholder="Limite de 25 caractères" required/>
+
+
+			<label for="content">Commentaire :</label>
+			<textarea  rows="8" name="content" id="content" placeholder="Limite de 250 caractères ... ..." maxlength="250" required></textarea>
+
+
+		<div class="validation-btn">
+				<button class="btn">Enregistrer</button>
+				<a href="index.php" class="btn">Annuler</a>
+		</div>
+	</form>
+
+</section>

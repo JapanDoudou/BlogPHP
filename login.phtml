@@ -1,0 +1,27 @@
+<form action="login.php" method="post">
+
+	<?php if($error == "error") :?>
+		<p class="error">Vous vous êtes trompés d'identifiant ou de mot de passe. En cas d'oubli de mot de passe, vous pouvez en redemander un <a href="">ici</a></p>
+	<?php endif ?>
+
+	<?php if($error == "already") :?>
+		<p class="error">Cet email est déjà enregistré, un utilsateur existe donc déjà</p>
+	<?php endif ?>
+
+	<fieldset>
+		<label for="user">
+			<legend>User Name</legend>
+		</label>
+		<input type='text' id="user" name="user" placeholder="votre nom de connexion" required>
+	</fieldset>
+
+	<fieldset>
+		<label for="password">
+			<legend>Mot de passe</legend>
+		</label>
+		<input type="text" style="-webkit-text-security: circle;" name="password" id="password" placeholder="********" required>
+	</fieldset>
+	<button class="btn">Se Connecter !</button>
+</form>
+
+<p>Si vous n'êtes pas encore inscrit, <a href="register.php" class="btn">c'est par ici !</a></p>

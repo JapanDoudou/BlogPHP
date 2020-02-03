@@ -1,0 +1,332 @@
+
+
+button{
+	background-color: gray;
+	border:2px solid #FAF7DF;
+    border-radius: 5px;
+    padding:10px;
+    color:white;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+button:hover{
+	background-color:rgba(122,122,122);
+}
+
+body{
+
+	perspective: 3000px;
+    perspective-origin: top;
+    position:relative;
+}
+
+img{
+	max-width: 150px;
+}
+
+	/*********** Header *************/
+
+header{
+text-align: center;
+color:white;
+}
+
+h1{
+text-align: center;
+color:var(--text-color);
+}
+
+main{
+
+}
+
+/************* Main *********************/
+
+
+
+#memory{
+	list-style: none;
+	display: flex;
+  align-items: center;
+  justify-content: center;
+	align-content: space-around;
+	flex-wrap: wrap;
+  border-radius: 5px;
+  margin:10px auto;
+  padding:0px;
+  max-width: 525px;
+}
+
+#memory li{
+	width:110px;
+	height:110px;
+  margin:10px;
+	position:relative;
+	transition: 1s;
+	transform-style: preserve-3d;
+}
+
+#memory li:hover{
+    box-shadow: 0px 0px 25px #f8f8f8;
+}
+
+.derriere{
+	backface-visibility: hidden;
+	width:100%;
+	height:100%;
+    border:4px solid var(--grid-color);
+    border-radius: 5px;
+	background: radial-gradient(circle, var(--grid-color) 0%, var(--second-gradient-color) 100%);
+	position:absolute;
+    position:relative;
+  	transform: rotateY(180deg); /* décalage de 50% de sa propre taille */
+    overflow:hidden;
+	z-index: 1;
+	transition:all 5s;
+}
+
+.derriere>div{
+    color:var(--text-color);
+    position:absolute;
+        top: 50%;
+    left: 50%; /* à 50%/50% du parent référent */
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+    font-family: 'Righteous', cursive;
+    font-size: 2rem;
+    text-align: center;
+    padding:10px;
+    border:2px solid var(--grid-color);
+    border-radius: 5px;
+    width:95%;
+    height:95%;
+}
+
+.derriere>div>i{
+    display:block;
+    font-size: 3rem;
+}
+
+.card {
+    position:absolute;
+    width:100%;
+    height:100%;
+    padding:1px;
+	top: 50%;
+    left: 50%; /* à 50%/50% du parent référent */
+  	transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+    background-color: var(--text-color);
+    backface-visibility: hidden;
+    z-index: 2;
+    
+}
+
+.selected{
+	border:2px solid forestgreen;
+	background-color: forestgreen;
+	backface-visibility: hidden;
+	position:absolute;
+	transition:all 10s;
+	z-index: 100;
+}
+
+.completed{
+    animation:rainbow 2s ease infinite;
+}
+
+.rotation{
+	transform: rotateY(540deg);
+}
+
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.middle{
+    margin:10px;
+    padding:10px;
+}
+
+.middle p{
+    text-align: center;
+}
+
+#paires,#count{
+    font-family: 'Righteous', cursive;
+}
+
+/*************** LEADERBOARD ********************/
+
+.medal{
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin: 25px 0 25px 25px;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  font-size: 12px;
+
+}
+
+.medal.m1:nth-child(1){ 
+    background: gold; 
+    font-weight: bolder;
+    width:40px;
+    height:40px;
+    line-height: 100%;
+    color:#FFFBE5;
+    box-shadow: 2px 2px 8px #E5D372;
+    text-shadow: 2px 2px 6px #B7A85B;
+    border-radius: 50%;
+    border:2px solid #FFEB7F;
+}
+
+.medal.m2:nth-child(1){ 
+    background: silver; 
+    font-weight: 3000;
+    width:40px;
+    height:40px;
+line-height: 100%;
+    color:#FFFBE5;
+    box-shadow: 2px 2px 8px #DCDCDC;
+    text-shadow: 2px 2px 6px #A9A9A9;
+    border-radius: 50%;
+    border:2px solid #778899;
+}
+
+.medal.m3:nth-child(1){ 
+    background: #b87333; 
+    font-weight: bolder;
+    width:40px;
+    height:40px;
+    line-height: 100%;
+    color:#F3BF8E;
+    box-shadow: 2px 2px 8px #8A4F18;
+    text-shadow: 2px 2px 6px #8A4F18;
+    border-radius: 50%;
+    border:2px solid #E9750A;
+}
+
+
+/**
+ * The "shine" element
+ */
+
+.medal:after {
+  
+  animation: shine 2s ease-in-out  infinite;
+  animation-fill-mode: forwards;  
+  content: "";
+  position: absolute;
+  top: -110%;
+  left: -210%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  transform: rotate(30deg);
+  
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right, 
+    rgba(255, 255, 255, 0.0) 0%,
+    rgba(255, 255, 255, 0.33) 77%,
+    rgba(255, 255, 255, 1) 92%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+}
+
+.medal:active:after {
+  opacity: 0;
+}
+
+@keyframes shine{
+  10% {
+    opacity: 1;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+  }
+  100% {
+    opacity: 0;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+  }
+
+}
+
+
+
+/********* Social *********/
+
+
+/************** Footer *************************/
+
+
+/******* Tablettes *************/
+
+@media screen and (min-width: 640px)
+{
+
+}
+
+/******** Pour PC *************/ 
+
+@media screen and (min-width: 1025px)
+{
+
+
+}
+
+/*********** Rainbow Effect ****************/
+
+@keyframes rainbow{
+
+		100%,0%{
+			background-color: rgb(255,0,0);
+		}
+		8%{
+			background-color: rgb(255,127,0);
+		}
+		16%{
+			background-color: rgb(255,255,0);
+		}
+		25%{
+			background-color: rgb(127,255,0);
+		}
+		33%{
+			background-color: rgb(0,255,0);
+		}
+		41%{
+			background-color: rgb(0,255,127);
+		}
+		50%{
+			background-color: rgb(0,255,255);
+		}
+		58%{
+			background-color: rgb(0,127,255);
+		}
+		66%{
+			background-color: rgb(0,0,255);
+		}
+		75%{
+			background-color: rgb(127,0,255);
+		}
+		83%{
+			background-color: rgb(255,0,255);
+		}
+		91%{
+			background-color: rgb(255,0,127);
+		}
+}
+

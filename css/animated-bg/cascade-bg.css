@@ -1,0 +1,137 @@
+/******************** Animated Background ------------*/
+
+ol{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color:aliceblue;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding:0px;
+    margin:0px;
+    z-index: -2;
+}
+
+ol>li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate2 40s linear infinite;
+    top: -150px;
+    z-index: -3;
+    
+}
+
+ol>li:nth-child(1){
+    left: 35%;
+    width: 0px;
+    height: 0px;
+    font-size: 3em;
+    animation-delay: 0s;
+}
+
+
+ol>li:nth-child(2){
+    left: 20%;
+    width: 0px;
+    height: 0px;
+    font-size: 4em;
+    animation-delay: 3s;
+    animation-duration: 22s;
+}
+
+ol>li:nth-child(3){
+    left: 20%;
+    width: 0px;
+    height: 0px;
+    font-size: 4em;
+    animation-delay: 2s;
+}
+
+ol>li:nth-child(4){
+    left: 70%;
+    width: 0px;
+    height: 0px;
+    font-size: 4em;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+ol>li:nth-child(5){
+    left: 45%;
+    width: 0px;
+    height: 0px;
+    font-size: 4em;
+    animation-delay: 1s;
+}
+
+ol>li:nth-child(6){
+    left: 85%;
+    width: 0px;
+    height: 0px;
+    font-size: 5em;
+    animation-delay: 2s;
+}
+
+ol>li:nth-child(7){
+    left: 15%;
+    width: 0px;
+    height: 0px;
+    font-size: 4em;
+    animation-delay: 8s;
+}
+
+ol>li:nth-child(8){
+    left: 22%;
+    width: 0px;
+    height: 0px;
+    font-size: 3em;
+    animation-delay: 8s;
+    animation-duration: 45s;
+}
+
+ol>li:nth-child(9){
+    left: 75%;
+    width: 0px;
+    height: 0px;
+    font-size: 2em;
+    animation-delay: 2s;
+    animation-duration: 55s;
+}
+
+ol>li:nth-child(10){
+    left: 17%;
+    width: 0px;
+    height: 0px;
+    font-size: 4em;
+    animation-delay: 0s;
+    animation-duration: 21s;
+}
+
+
+
+@keyframes animate2 {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    
+    50%{
+        transform: translateY(500px) rotate(360deg);
+        opacity: 0.7;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}

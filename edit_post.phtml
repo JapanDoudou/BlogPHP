@@ -1,0 +1,24 @@
+<?php if(empty($_POST)) :?>
+<form id="newArticle" action="edit_post.php" method="post">
+<h2>Corriger l'article <?= $oldPost["title"]?></h2>
+	<fieldset>
+		<input type="hidden" name="ID" value="<?= $postToEdit ?>" />
+		<legend>Nouvelles données </legend>
+		<label for="title">Titre</label>
+		<input type="text" name="title" id="title" value="<?= $oldPost["title"]?>" required>
+		<label for="content">Article</label>
+		<textarea name="content" id="content" rom="10" col="3" required><?= $oldPost["content"]?></textarea>
+	
+		<label for='category'>Catégorie</label>
+		<select name="category" id="category" required>
+			<?php foreach ($categories as $category) :?>
+				<option value="<?= $category['ID'] ?>"><?= $category["title"] ?></option>
+			<?php endforeach ?>
+		</select>
+		<div class="validation-btn">
+				<button class="btn">Enregistrer</button>
+				<a href="index.php" class="btn">Annuler</a>
+		</div>
+	</fieldset>
+</form>
+<?php endif ?>

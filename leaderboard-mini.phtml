@@ -1,0 +1,14 @@
+<table ID="leaderboard">
+	<tbody>
+		<?php foreach ($tops AS $top) :?>
+			<tr>
+				<?php if($j <= 3):?>
+					<td class="medal m<?= $j?>"><?= $j++ ?></td>
+				<?php else :?>
+					<td><?= $j++ ?></td>
+				<?php endif ?>
+				<td><?= $top['pseudo'] ?></td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>

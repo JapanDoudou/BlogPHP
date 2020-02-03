@@ -1,0 +1,22 @@
+<h1>Catégorie : <?= $category['title'] ?></h1>
+
+<ul ID="articles">
+	<?php foreach ($posts as $post) :?>
+		<li>
+			<h2><a href="article.php?ID=<?= $post['ID']?>"><?= $post['title'] ?></a></h2>
+			<p><?php
+				if ((strlen($post['smallContent'])) > 50){
+					echo $post['smallContent']." [...]";
+				} else { echo $post['smallContent']; }
+				
+				?>
+			</p>
+			<div class="author">Rédigé par <?= $post['firstName']." ".$post['lastName'] ?> le <?= $post['creationDate'] ?></div>
+		</li>
+	<?php endforeach ?>
+	<ul id="pagination">
+    	<?php for ($i = 1; $i<=$pages; $i ++):?>
+    		<li><a href="categoryresult.php?page=<?= $i?>&ID=<?=$categoryID?>">Page <?= $i?></a></li>
+    	<?php endfor ?>
+    </ul>
+</ul>
